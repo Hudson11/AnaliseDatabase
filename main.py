@@ -20,6 +20,9 @@ print(df.isnull().sum()) # verifica cada coluna.
 print(df.isnull().sum(axis=1)) # verifica cada linha.
 
 # e - Descubra a coorelação entre os atributos do DataFrame
+# Retorna a relação entre os atributos da base, quanto mais próximo de 1
+# significa que a uma alta coorelação entre os campos, em outras palavras, a alteração de
+# valor de um influência na variação do valor do outro.
 print(df.corr())
 
 # f - grave em um outro arquivo, normalizar valores entre o e 1, substituir
@@ -29,7 +32,7 @@ df.fillna(value=df.mean(), inplace=True)
 print(df)
 df_aux = df.drop('class', axis=1)
 print(df_aux)
-df_norm = (df_aux - df_aux.mean()) / (df_aux.min() - df_aux.max())
+df_norm = (df_aux - df_aux.min()) / (df_aux.max() - df_aux.min())
 print(df_norm)
 df_norm.to_csv('data.csv')
 
@@ -64,6 +67,5 @@ data_4.head(10).plot.bar(title='índice de massa corporal para pacientes com pre
 # Nota: como são muitos dados resolvi apenas plotar os 10 primeiros da sequência. 
 plt.show()
 
-print(data_5)
 data_5.head(10).plot.bar(title='idades de pacientes que já engravidaram mais que 2 vezes')
 plt.show()
